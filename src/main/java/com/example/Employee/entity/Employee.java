@@ -38,6 +38,12 @@ public class Employee {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 
+	@Column(name = "tax_amount")
+	private Double taxAmount;
+
+	@Column(name = "cess_amount")
+	private Double cessAmount;
+
 	@Tolerate
 	public Employee (){
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Optional;
+
 @Service
 public class EmployeeService {
 
@@ -15,22 +17,22 @@ public class EmployeeService {
 
 	public Employee persistEmployeeDetails (Employee employee) {
 		if (employee != null) {
-			if(StringUtils.isEmpty (employee.getDoj ())){
+			if (StringUtils.isEmpty (employee.getDoj ())) {
 				throw new ValidationException ("DOJ Not Found");
 			}
-			if(StringUtils.isEmpty (employee.getEmail ())){
+			if (StringUtils.isEmpty (employee.getEmail ())) {
 				throw new ValidationException ("Email Not Found");
 			}
-			if(StringUtils.isEmpty (employee.getSalary ())){
+			if (StringUtils.isEmpty (employee.getSalary ())) {
 				throw new ValidationException ("Sal Not Found");
 			}
-			if(StringUtils.isEmpty (employee.getPhoneNumber ())){
+			if (StringUtils.isEmpty (employee.getPhoneNumber ())) {
 				throw new ValidationException ("PhoneNumber Not Found");
 			}
-			if(StringUtils.isEmpty (employee.getFirstName ())){
+			if (StringUtils.isEmpty (employee.getFirstName ())) {
 				throw new ValidationException ("FirstName Not Found");
 			}
-			if(StringUtils.isEmpty (employee.getLastName ())){
+			if (StringUtils.isEmpty (employee.getLastName ())) {
 				throw new ValidationException ("LastName Not Found");
 			}
 			Employee employeeObj = Employee.builder ()
@@ -46,4 +48,11 @@ public class EmployeeService {
 			throw new ValidationException ("Data Not Found");
 		}
 	}
+
+
+	public Employee getEmployeeDetailsById (String empId) {
+		Optional<Employee> employee = employeeRepo.findById (Long.valueOf (empId));
+		return employee.get ();
+	}
+
 }

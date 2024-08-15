@@ -21,13 +21,13 @@ public class Employee {
 	private String employeeId;
 
 	@Column(name = "first_name")
-	private int firstName;
+	private String firstName;
 
 	@Column(name = "last_name")
 	private String lastName;
 
 	@Column(name = "doj")
-	private int doj;
+	private String doj;
 
 	@Column(name = "email")
 	private String email;
